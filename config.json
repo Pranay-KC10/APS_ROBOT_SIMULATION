@@ -1,0 +1,16 @@
+{
+  "map_size": 120,
+  "window_size": 800,
+  "robot_radius": 10,
+  "learning_rate": 3.0,
+  "gradient_delta": 2.0,
+  "noise_std": 0.3,
+  "manual_speed": 4.0,
+  "manual_speed_boost": 3.0,
+  "gaussian_sigma": 8.0,
+  "rssi_min": -90,
+  "rssi_max": -30,
+  "fps": 60,
+  "trail_thickness": 2,
+  "colormap": "plasma"
+}
