@@ -1,72 +1,53 @@
-RF Coverage Mapping Simulator
+# RF Coverage Mapping Simulator
 
 An interactive Python simulator for RF (Wi-Fi) coverage mapping with autonomous and manual robot navigation using gradient ascent optimization.
 
-Overview
+---
 
-This simulator models and visualizes RSSI-based RF coverage mapping using both autonomous and manual control modes.
+## Overview
+
+This simulator models and visualizes RSSI-based RF coverage mapping using both autonomous and manual control modes.  
 It supports gradient-based navigation, trajectory export, and real-time visualization for research, education, and poster demonstrations.
 
-Key components:
+### Key Components
+- Analytical RSSI field generation using NumPy and Gaussian smoothing  
+- Real-time PyGame visualization  
+- Autonomous gradient ascent navigation (SPSA-like)  
+- Manual control via keyboard input  
+- Trajectory export to CSV for data analysis  
 
-Analytical RSSI field generation using NumPy and Gaussian smoothing
+---
 
-Real-time PyGame visualization
+## Features
+- Realistic RSSI field generation with Gaussian smoothing  
+- Real-time gradient ascent and manual navigation modes  
+- Live RSSI display and iteration counter  
+- Visual robot tracking and path history  
+- Map regeneration and CSV export  
+- Configurable parameters via JSON  
 
-Autonomous gradient ascent navigation (SPSA-like)
+---
 
-Manual control via keyboard input
+## Installation
 
-Trajectory export to CSV for data analysis
+### Requirements
+- Python 3.10 or higher  
+- pip package manager  
 
-Features
-
-Realistic RSSI field generation with Gaussian smoothing
-
-Real-time gradient ascent and manual navigation modes
-
-Live RSSI display and iteration counter
-
-Visual robot tracking and path history
-
-Map regeneration and CSV export
-
-Configurable parameters via JSON
-
-Installation
-Requirements
-
-Python 3.10 or higher
-
-pip package manager
-
-Setup
-
+### Setup
 Clone this repository and install dependencies:
-
+```bash
 pip install -r requirements.txt
+```
+---
 
-
-or manually:
-
-pip install numpy scipy pygame matplotlib
-
-Usage
-
-Run the simulator from the wifi_simulator directory:
-
+## Usage
+Run the simulator from the `wifi_simulator` directory:
+```bash
 cd wifi_simulator
 python main.py
-
-Controls
-Key	Action
-M	Toggle between auto/manual mode
-R	Regenerate random RSSI map
-E	Export path to CSV (path.csv)
-Arrow Keys / WASD	Move robot (manual mode)
-Shift	Increase manual movement speed
-ESC / Q	Quit the simulator
-Project Structure
+```
+## Project Structure
 wifi_simulator/
 │
 ├── main.py              # Entry point and visualization loop
@@ -78,8 +59,8 @@ wifi_simulator/
 ├── requirements.txt     # Dependencies
 └── README.md
 
-Configuration
 
+## Configuration
 Simulation parameters can be modified in config.json:
 
 {
@@ -97,40 +78,3 @@ Simulation parameters can be modified in config.json:
   "fps": 60,
   "colormap": "plasma"
 }
-
-Algorithm Description
-Gradient Ascent Navigation
-
-The robot estimates the RSSI gradient numerically:
-
-grad_x = (R(x + δ, y) - R(x - δ, y)) / (2δ)
-grad_y = (R(x, y + δ) - R(x, y - δ)) / (2δ)
-
-x_new = x + η * grad_x + noise_x
-y_new = y + η * grad_y + noise_y
-
-
-where
-R(x, y) is the RSSI value, η is the learning rate, and δ is the gradient step.
-
-RSSI Field Generation
-
-Generate random noise matrix
-
-Apply Gaussian smoothing
-
-Normalize to the target RSSI range
-
-Render with a chosen colormap
-
-Data Export
-
-Press E during simulation to export the robot’s path to path.csv:
-
-iteration,x,y,rssi
-0,45.00,67.00,-61.4
-1,45.50,67.30,-59.8
-...
-
-
-The exported data can be used for performance analysis and visualization.
